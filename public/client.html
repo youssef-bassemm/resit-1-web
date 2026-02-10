@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clinic Booking - Client</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Client View</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/doctor.html">Doctor View</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Client Login / Sign Up</h2>
+      <form id="auth-form">
+        <label>
+          Email
+          <input type="email" id="auth-email" required />
+        </label>
+        <label>
+          Password
+          <input type="password" id="auth-password" required />
+        </label>
+        <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+          <button type="button" id="signup-btn">Sign Up</button>
+          <button type="button" id="login-btn">Login</button>
+        </div>
+      </form>
+      <p id="auth-message" class="message"></p>
+    </section>
+
+    <section class="card">
+      <h2>Available Doctors</h2>
+      <button id="load-doctors-btn">Load Doctors</button>
+      <ul id="doctor-list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Book Appointment</h2>
+      <form id="booking-form">
+        <label>
+          Your Name
+          <input type="text" id="patient-name" required />
+        </label>
+        <label>
+          Doctor
+          <select id="doctor-select"></select>
+        </label>
+        <label>
+          Date (YYYY-MM-DD)
+          <input type="text" id="appointment-date" required />
+        </label>
+        <label>
+          Time (HH:MM)
+          <input type="text" id="appointment-time" required />
+        </label>
+        <button type="submit">Book</button>
+      </form>
+      <p id="booking-message" class="message"></p>
+    </section>
+  </main>
+
+  <script src="client.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clinic Booking - Doctor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Doctor View</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/client.html">Client View</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Publish Doctor Profile</h2>
+      <form id="doctor-form">
+        <label>
+          Name
+          <input type="text" id="doctor-name" required />
+        </label>
+        <label>
+          Specialization
+          <input type="text" id="doctor-specialization" required />
+        </label>
+        <button type="submit">Save Doctor</button>
+      </form>
+      <hr style="margin:1rem 0;" />
+      <h3>Or select existing doctor</h3>
+      <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+        <button type="button" id="load-doctors-btn">Load Doctors</button>
+        <select id="existing-doctor-select"></select>
+        <button type="button" id="use-doctor-btn">Use Selected Doctor</button>
+      </div>
+      <p id="doctor-message" class="message"></p>
+    </section>
+
+    <section class="card">
+      <h2>All Appointments (for this doctor)</h2>
+      <button id="load-appointments-btn">Load My Appointments</button>
+      <ul id="appointment-list"></ul>
+    </section>
+  </main>
+
+  <script src="doctor.js"></script>
+</body>
+</html>
+
