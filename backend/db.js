@@ -1,0 +1,51 @@
+const sqlite = require('sqlite3');
+const db = new sqlite.Database('travel.db');
+
+// Existing Trip table from starter project (not used heavily in clinic app)
+const createTripTable = `CREATE TABLE IF NOT EXISTS TRIP (
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  DESTINATIONNAME TEXT NOT NULL,
+  LOCATION TEXT NOT NULL,
+  CONTINENT TEXT NOT NULL,
+  LANGUAGE TEXT NOT NULL,
+  DESCRIPTION TEXT NOT NULL,
+  FLIGHTCOST REAL DEFAULT 0,
+  ACCOMMODATIONCOST REAL DEFAULT 0,
+  MEALCOST REAL DEFAULT 0,
+  VISACOST REAL DEFAULT 0,
+  TRANSPORTATIONCOST REAL DEFAULT 0,
+  CURRENCYCODE TEXT DEFAULT 'N/A'
+)`;
+
+// User table for basic auth (role: 'user' or 'doctor' if you want)
+const createUserTable = `CREATE TABLE IF NOT EXISTS USER (
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  EMAIL TEXT UNIQUE NOT NULL,
+  ROLE TEXT NOT NULL,
+  PASSWORD TEXT NOT NULL
+)`;
+
+// Doctor table for clinic app
+const createDoctorTable = `CREATE TABLE IF NOT EXISTS DOCTOR (
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  NAME TEXT NOT NULL,
+  SPECIALIZATION TEXT NOT NULL
+)`;
+
+// Appointment table linking to doctors
+const createAppointmentTable = `CREATE TABLE IF NOT EXISTS APPOINTMENT (
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  DOCTOR_ID INTEGER NOT NULL,
+  PATIENT_NAME TEXT NOT NULL,
+  APPOINTMENT_DATE TEXT NOT NULL,
+  APPOINTMENT_TIME TEXT NOT NULL,
+  FOREIGN KEY (DOCTOR_ID) REFERENCES DOCTOR(ID)
+)`;
+
+module.exports = {
+  db,
+  createTripTable,
+  createUserTable,
+  createDoctorTable,
+  createAppointmentTable,
+};
